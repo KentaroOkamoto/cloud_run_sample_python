@@ -5,7 +5,7 @@ steps:
     args: [
           'build',
           '-t', 'gcr.io/${_GCR_PROJECT}/${_GCR_IMAGE_NAME_APP}:${_GCR_TAG}',
-          '-f', 'Dockerfile',
+          '-f', 'run/flask_app/Dockerfile',
           '--cache-from', 'gcr.io/${_GCR_PROJECT}/${_GCR_IMAGE_NAME_APP}:${_GCR_TAG}',
           '.'
           ]
