@@ -1,0 +1,23 @@
+steps:
+  # docker build
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: .
+    args: [
+          'build',
+          '-t', 'gcr.io/${_GCR_PROJECT}/${_GCR_IMAGE_NAME_APP}:${_GCR_TAG}',
+          '-f', 'Dockerfile',
+          '--cache-from', 'gcr.io/${_GCR_PROJECT}/${_GCR_IMAGE_NAME_APP}:${_GCR_TAG}',
+          '.'
+          ]
+  # push image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ["push", 'gcr.io/${_GCR_PROJECT}/${_GCR_IMAGE_NAME_APP}']
+
+
+substitutions:
+  # # Project ID
+  _GCR_PROJECT: kdc-sd-kk003-211119
+  # # Image name
+  _GCR_IMAGE_NAME_APP: flask-app
+  # # Image tag
+  _GCR_TAG: latest
