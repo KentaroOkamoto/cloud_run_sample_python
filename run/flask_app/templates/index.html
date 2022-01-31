@@ -1,0 +1,56 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カレンダー登録付 在宅勤務届</title>
+</head>
+<body>
+
+  <div>
+    {% if message %}
+    <p>{{message}}</p>
+    {% endif %}
+  </div>  
+
+
+  <div style="color:red;">
+    {% if errMsg %}
+    <p>{{errMsg}}</p>
+    {% endif %}
+  </div>  
+
+  <form method="POST" action="/">
+    <p>Sharepoint</p>
+    <div>
+      <select name="list">
+	{% for listname in listnamesList %}
+	   <option value={{listname}}>{{listname}}</option>
+        {% endfor %}
+      </select>
+    </div>
+      <label for="pp_username">Username:</label>
+      <!-- <input type="text" id="pp_username" name="pp_username"> -->
+      <input type="text" id="pp_username" name="pp_username" value={{pp_uname}} > 
+    </div>
+    <div>
+        <label for="pp_pass">Password:</label>
+        <!-- <input type="password"  id="pp_pass" name="pp_password"> -->
+        <input type="password"  id="pp_pass" name="pp_password" value={{pp_pwd}} >
+    </div>
+
+    <div>
+      <p>就労管理システム</p>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+    </div>
+    <div>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="password">
+    </div>
+    {% for reqName in reqNamesList %}
+       <input type="submit"  name="REQ" value={{reqName}}>
+    {% endfor %}
+  </form>
+</body>
+</html>
