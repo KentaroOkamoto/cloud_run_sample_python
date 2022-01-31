@@ -1,4 +1,4 @@
 Flask==2.0.2
 gunicorn==20.1.0
-Office365-REST-Python-Client
-namedivider-python
+Office365-REST-Python-Client==2.3.9
+namedivider-python==0.1.0
