@@ -27,5 +27,5 @@ try:
 except:
     sys.exit()
 SFApp = sa.SyurouFlaskApp(name="KK_App",tsrvr=args.tserver)
-SFApp.run()
+SFApp.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 sys.exit()
