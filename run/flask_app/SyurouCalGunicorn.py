@@ -12,10 +12,10 @@ import sys
 import os
 #import argparse as agp
 
-try:
-    import SyurouCalClasses.SyurouAcs as sa
-except:
-    import SyurouCalClasses.SyurouAcsDev as sa
+#try:
+import SyurouCalClasses.SyurouAcs as sa
+#except:
+#    import SyurouCalClasses.SyurouAcsDev as sa
 
 __ver__="0.4.2"
 __date__="2022-Feb-02"
