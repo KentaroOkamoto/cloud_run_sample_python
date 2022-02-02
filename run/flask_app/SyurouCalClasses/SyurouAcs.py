@@ -32,10 +32,10 @@ import webbrowser
 import time
 import urllib.parse
 
-if "SyurouAcs.py" in __file__:
-    import SyurouCalClasses.SharePointCal as spcal
-else:
-    import SyurouCalClasses.SharePointCalDev as spcal
+#if "SyurouAcs.py" in __file__:
+import SyurouCalClasses.SharePointCal as spcal
+#else:
+#    import SyurouCalClasses.SharePointCalDev as spcal
 
 import SyurouCalClasses.SharePointData as dc       # data class for sharepoint access
 
