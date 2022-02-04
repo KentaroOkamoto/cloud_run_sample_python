@@ -145,6 +145,7 @@ class SyurouFlaskApp(object):
     app = None
 
     def __init__(self, name,tsrvr=False):
+        os.system("mkdir -p scriptTmp cssTmp images jsTmp")
         self.app = Flask(name)
         self.__all_endpoint()
 
