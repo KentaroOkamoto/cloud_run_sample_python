@@ -402,7 +402,7 @@ if __name__ == '__main__':
 
     ## local base simple testing 
     ## network proxy
-    PROXY = "proxy.km.local"
+    PROXY = "10.181.210.177"
     PROXY_PORT = 8080
     PROXY_USR = "skype"  #<<-- your user name for a porxy
     PROXY_PWD = "skype"  #<<--
