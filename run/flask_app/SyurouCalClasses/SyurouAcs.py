@@ -160,7 +160,7 @@ class SyurouFlaskApp(object):
         self.syuObj.setUrl(self.reqUrl) 
         self.spObj = spcal.SharepointCal()
 
-        PROXY = "proxy.km.local"
+        PROXY = "10.181.210.177"
         PROXY_PORT = 8080
         PROXY_USR = "skype"                                    
         PROXY_PWD = "skype"                                    
