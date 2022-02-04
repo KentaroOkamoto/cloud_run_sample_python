@@ -151,11 +151,13 @@ class SyurouFlaskApp(object):
         self.syuObj = SyurouCore()
         if tsrvr:
             print("就労管理テストサーバ接続: working 9:00-18:00")
-            self.baseUrl = "http://cws-ap-ccms-test.km.local:17100"  # test server 
+#            self.baseUrl = "http://cws-ap-ccms-test.km.local:17100"  # test server 
+            self.baseUrl = "http://10.192.252.141:17100"  # test server 
         else:
             print("就労管理サーバ接続")
-            self.baseUrl = "https://comedge10.km.local"
-
+#            self.baseUrl = "https://comedge10.km.local"
+            self.baseUrl = "https://10.192.252.44"
+            
         self.reqUrl = self.baseUrl + "/cws/cws"
         self.syuObj.setUrl(self.reqUrl) 
         self.spObj = spcal.SharepointCal()
