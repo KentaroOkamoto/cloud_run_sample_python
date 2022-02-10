@@ -309,13 +309,15 @@ class SharepointCal:
             sn = self.loginInf['Surname']
             surname = sn['ja'] if  len(sn['ja']) > 0 else sn['en']
             title = f"{surname}:在宅"
-            title = f"KK Test by {surname}"
-        print("Title:",title)
+            #title = f"KK Test by {surname}"
         tz = dt.timezone.utc   # time zone
         df = '%Y-%m-%dT%H:%M:%SZ'    # date, time format
         for date in evtDateList:
-            ev_dt = dt.datetime.combine(date,workStartTime).astimezone(tz).strftime(df)
-            end_dt = dt.datetime.combine(date,workEndTime).astimezone(tz).strftime(df)
+            ev_dt = pytz.timezone("Asia/Tokyo").localize(dt.datetime.combine(date,workStartTime)).astimezone(tz).strftime(df)
+            end_dt = pytz.timezone("Asia/Tokyo").localize(dt.datetime.combine(date,workEndTime)).astimezone(tz).strftime(df)  
+            ## 
+            ##ev_dt = dt.datetime.combine(date,workStartTime).astimezone(tz).strftime(df)
+            ##end_dt = dt.datetime.combine(date,workEndTime).astimezone(tz).strftime(df)
             ## setup a event property 
             evntProp = self._getEmptyEventProperty()
             evntProp['Title']= title
@@ -402,7 +404,7 @@ if __name__ == '__main__':
 
     ## local base simple testing 
     ## network proxy
-    PROXY = "10.181.210.177"
+    PROXY = "proxy.km.local"
     PROXY_PORT = 8080
     PROXY_USR = "skype"  #<<-- your user name for a porxy
     PROXY_PWD = "skype"  #<<--

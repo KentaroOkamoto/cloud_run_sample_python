@@ -5,6 +5,7 @@
 File Name:SyurouAcs.py
 @Author:Yasuhide Sato
 History:
+2022-Feb-2       mkdir to save files
 2022-Jan-24      Test Server connection option
 2022-Jan-6       Login Error
 2021-Dec         Cleanup Code
@@ -32,10 +33,10 @@ import webbrowser
 import time
 import urllib.parse
 
-#if "SyurouAcs.py" in __file__:
-import SyurouCalClasses.SharePointCal as spcal
-#else:
-#    import SyurouCalClasses.SharePointCalDev as spcal
+if "SyurouAcs.py" in __file__:
+    import SyurouCalClasses.SharePointCal as spcal
+else:
+    import SyurouCalClasses.SharePointCalDev as spcal
 
 import SyurouCalClasses.SharePointData as dc       # data class for sharepoint access
 
@@ -152,18 +153,22 @@ class SyurouFlaskApp(object):
         self.syuObj = SyurouCore()
         if tsrvr:
             print("就労管理テストサーバ接続: working 9:00-18:00")
-#            self.baseUrl = "http://cws-ap-ccms-test.km.local:17100"  # test server 
-            self.baseUrl = "http://10.192.252.141:17100"  # test server 
+            SVR_NAME = "cws-ap-ccms-test.km.local"
+            status = os.system(f"ping -c 1 -w 2 {SVR_NAME} > /dev/null") 
+            if status != 0:SVR_NAME = "10.192.252.141" #  Not solved name, user IP ADR
+            self.baseUrl = f"http://{SVR_NAME}:17100"  # test server 
         else:
             print("就労管理サーバ接続")
-#            self.baseUrl = "https://comedge10.km.local"
-            self.baseUrl = "https://10.192.252.44"
-            
+            SVR_NAME = "comedge10.km.local"
+            status = os.system(f"ping -c 1 -w 2 {SVR_NAME} > /dev/null") 
+            if status != 0:SVR_NAME = "10.192.252.35"  #  Not solved name, user IP ADR
+            self.baseUrl = f"https://{SVR_NAME}"
+
         self.reqUrl = self.baseUrl + "/cws/cws"
         self.syuObj.setUrl(self.reqUrl) 
         self.spObj = spcal.SharepointCal()
 
-        PROXY = "10.181.210.177"
+        PROXY = "proxy.km.local"
         PROXY_PORT = 8080
         PROXY_USR = "skype"                                    
         PROXY_PWD = "skype"                                    

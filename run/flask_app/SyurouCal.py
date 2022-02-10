@@ -17,8 +17,8 @@ try:
 except:
     import SyurouCalClasses.SyurouAcsDev as sa
 
-__ver__="0.4.2"
-__date__="2022-Jan-24"
+__ver__="0.4.3"
+__date__="2022-Feb-08"
 
 parser = agp.ArgumentParser("python " + __file__)
 parser.add_argument('-t','--tserver', help='就労管理テストサーバ', action='store_true')
